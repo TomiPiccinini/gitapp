@@ -94,7 +94,7 @@ const updateMovement = (
 ) => {
     return Movement.findOne({ where: { id: id } }).then((movement) => {
         if (movement != null) {
-            return movement.update({ date, amount, type, category, description });
+            return movement.update({ date, amount, type, category, descrip });
         }
         return null;
     });
