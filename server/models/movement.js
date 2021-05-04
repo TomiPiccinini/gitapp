@@ -30,6 +30,10 @@ const Movement = db.define(
             type: Sequelize.STRING,
             allowNull: false,
         },
+        description: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
         
     },
     { tableName: 'Movement' }
@@ -71,7 +75,7 @@ const createMovement = ({
     category = '',
 } = {}) => {
     date = new Date()
-    return Movement.create({ date, amount, type, category });
+    return Movement.create({ date, amount, type, category, description });
 };
 
 /**
@@ -91,7 +95,7 @@ const updateMovement = (
 ) => {
     return Movement.findOne({ where: { id: id } }).then((movement) => {
         if (movement != null) {
-            return movement.update({ date, amount, type, category });
+            return movement.update({ date, amount, type, category, description });
         }
         return null;
     });
