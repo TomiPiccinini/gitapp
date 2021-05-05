@@ -9,6 +9,7 @@ const init = () => {
                 date: '01/01/2021',
                 amount: 1000.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -16,6 +17,7 @@ const init = () => {
                 date: '04/01/2021',
                 amount: 587.5,
                 category: 'Librería',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -24,6 +26,7 @@ const init = () => {
                 amount: 50000.0,
                 type: MovementType.INCOME,
                 category: 'Sueldo',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -31,6 +34,7 @@ const init = () => {
                 date: '04/01/2021',
                 amount: 233.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -39,6 +43,7 @@ const init = () => {
                 amount: 10000.0,
                 type: MovementType.INCOME,
                 category: 'Plazo Fijo',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -46,6 +51,7 @@ const init = () => {
                 date: '07/01/2021',
                 amount: 847.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -53,6 +59,7 @@ const init = () => {
                 date: '08/01/2021',
                 amount: 751.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -60,6 +67,7 @@ const init = () => {
                 date: '10/01/2021',
                 amount: 2500.0,
                 category: 'Reparación Celular',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -67,6 +75,7 @@ const init = () => {
                 date: '14/01/2021',
                 amount: 1432.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -74,6 +83,7 @@ const init = () => {
                 date: '15/01/2021',
                 amount: 2300.0,
                 category: 'Librería',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -81,6 +91,7 @@ const init = () => {
                 date: '20/01/2021',
                 amount: 4877.0,
                 category: 'Regalos',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -88,6 +99,7 @@ const init = () => {
                 date: '21/01/2021',
                 amount: 2900.0,
                 category: 'Regalos',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -96,6 +108,7 @@ const init = () => {
                 amount: 50000.0,
                 type: MovementType.INCOME,
                 category: 'Sueldo',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -104,6 +117,7 @@ const init = () => {
                 amount: 11000.0,
                 type: MovementType.INCOME,
                 category: 'Plazo Fijo',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -111,6 +125,7 @@ const init = () => {
                 date: '07/02/2021',
                 amount: 2100.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -118,6 +133,7 @@ const init = () => {
                 date: '08/02/2021',
                 amount: 876.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -125,6 +141,7 @@ const init = () => {
                 date: '10/02/2021',
                 amount: 1398.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -132,6 +149,7 @@ const init = () => {
                 date: '15/02/2021',
                 amount: 3456.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         )
         .then(() =>
@@ -139,6 +157,7 @@ const init = () => {
                 date: '20/02/2021',
                 amount: 1498.0,
                 category: 'Supermercado',
+                descripcion: '',
             })
         );
 };
