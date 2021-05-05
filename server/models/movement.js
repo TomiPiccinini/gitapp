@@ -92,6 +92,7 @@ const updateMovement = (
         amount = 0.0,
         type = MovementType.EXPENSE,
         category = '',
+        descripcion = '',
     } = {}
 ) => {
     return Movement.findOne({ where: { id: id } }).then((movement) => {
