@@ -73,6 +73,7 @@ const createMovement = ({
     amount = 0.0,
     type = MovementType.EXPENSE,
     category = '',
+    descripcion = '',
 } = {}) => {
     date = new Date()
     return Movement.create({ date, amount, type, category, descripcion });
