@@ -75,6 +75,8 @@ window.onRemove = async function () {
     await movementService.remove(movement);
     state.movement = {};
     render('movement-form.html', state, refs.form);
+
+    window.location.reload();
 };
 
 /**
@@ -93,6 +95,7 @@ window.onSave = async function (e) {
 
     state.movement = {};
     render('movement-form.html', state, refs.form);
+    window.location.reload();
 };
 
 init();
