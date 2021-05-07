@@ -69,18 +69,25 @@ window.onRemove = async function () {
  * Guarda un movimiento
  **/
 window.onSave = async function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    const movement = getMovementData();
+    const form = document.querySelector('form');
+    if (form.checkValidity()){
+        e.stopPropagation();
+        e.preventDefault();
+        const movement = getMovementData();
 
-    if (movement.id) {
-        await movementService.update(movement);
-    } else {
-        await movementService.create(movement);
+        if (movement.id) {
+            await movementService.update(movement);
+        } else {
+            await movementService.create(movement);
+        }
+
+        state.movement = {};
+        render('movement-form.html', state, refs.form);
     }
 
-    state.movement = {};
-    render('movement-form.html', state, refs.form);
+    else{
+        return;
+    }
 };
 
 init();
