@@ -32,8 +32,10 @@ async function create(movement) {
         },
         body: JSON.stringify(movement),
     });
-
-    return resp.json();
+    
+    swal("Guardado exitoso", " ", "success");  
+    return resp.json(); 
+    
 }
 
 async function remove(movement) {
