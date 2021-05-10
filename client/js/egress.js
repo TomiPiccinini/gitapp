@@ -38,6 +38,16 @@ function getMovementData() {
     return movement;
 }
 
+function Confirmar() {
+    var mensaje = confirm("¿Está seguro que desea eliminar el movimiento?");
+    if (mensaje) {
+    }
+    else {
+        state.movement = {};
+        render('movement-form.html', state, refs.form);
+    }
+}
+
 // Event Listeners
 
 /**
@@ -60,15 +70,21 @@ window.onCancel = function () {
  * Elimina un movimiento
  **/
 window.onRemove = async function () {
-    await movementService.update(state.movement);
+    Confirmar();
+    const movement = getMovementData();
+    await movementService.remove(movement);
     state.movement = {};
     render('movement-form.html', state, refs.form);
+    window.location.reload();
 };
 
 /**
  * Guarda un movimiento
  **/
 window.onSave = async function (e) {
+    const form = document.querySelector('form');
+
+    if(form.checkValidity()){
     e.stopPropagation();
     e.preventDefault();
     const movement = getMovementData();
@@ -81,6 +97,12 @@ window.onSave = async function (e) {
 
     state.movement = {};
     render('movement-form.html', state, refs.form);
+    window.location.reload();
+}
+
+    else{
+        return;
+    }
 };
 
 init();
