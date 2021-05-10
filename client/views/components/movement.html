@@ -14,7 +14,10 @@
                 <p class="has-text-weight-medium">{{ movement.category }}</p>
                 <p class="has-text-weight-light is-size-7">
                     {{ movement.date }}
-                </p>
+                </p> 
+                <p class="has-text-weight-medium is-size-7">
+                    
+                    {{movement.descripcion}} </p>
             </div>
         </div>
     </div>
@@ -32,7 +35,7 @@
         <div class="level-item">
             <button
                 class="button is-small is-rounded"
-                onclick="editMovement({{ movement | dump }})"
+                onclick="editMovement({{movement | dump}})"
             >
                 editar
             </button>
