@@ -12,35 +12,37 @@ let refs = getRefs(document.body);
 /**
  * Obtiene todos los ultimos movimientos disponibles
  **/
-async function getIncomes() {
-    return movementService.getIncomes();
+async function getEgress() {
+    return movementService.getEgress();
 }
 
 /**
  * Renderiza los libros
  **/
-function renderIncomes(state) {
-    render('movement-list.html', state, refs.incomes);
+function renderEgress(state) {
+    render('movement-list.html', state, refs.expense);
 }
 
 /**
- * Inicializa la vista income
+ * Inicializa la vista egress
  **/
 async function init() {
-    state.movements = await getIncomes();
-    renderIncomes(state);
+    state.movements = await getEgress();
+    renderEgress(state);
 }
 
 function getMovementData() {
     const formData = new FormData(refs.form.firstElementChild);
     const movement = Object.fromEntries(formData);
-    movement.type = "income"
+    movement.type = "expense"
     return movement;
 }
 
 function Confirmar() {
     var mensaje = confirm("¿Está seguro que desea eliminar el movimiento?");
-    if (!mensaje) {
+    if (mensaje) {
+    }
+    else {
         state.movement = {};
         render('movement-form.html', state, refs.form);
     }
@@ -81,26 +83,26 @@ window.onRemove = async function () {
  **/
 window.onSave = async function (e) {
     const form = document.querySelector('form');
-    if (form.checkValidity()){
-        e.stopPropagation();
-        e.preventDefault();
-        const movement = getMovementData();
 
-        if (movement.id) {
-            await movementService.update(movement);
-        } else {
-            await movementService.create(movement);
-        }
+    if(form.checkValidity()){
+    e.stopPropagation();
+    e.preventDefault();
+    const movement = getMovementData();
 
-        state.movement = {};
-        render('movement-form.html', state, refs.form);
-        window.location.reload();
+    if (movement.id) {
+        await movementService.update(movement);
+    } else {
+        await movementService.create(movement);
     }
-  
+
+    state.movement = {};
+    render('movement-form.html', state, refs.form);
+    window.location.reload();
+}
+
     else{
         return;
     }
-
 };
 
 init();
