@@ -33,7 +33,7 @@ async function create(movement) {
         body: JSON.stringify(movement),
     });
     
-    swal("Guardado exitoso", " ", "success");  
+    alert('Guardado exitoso'); 
     return resp.json(); 
     
 }
