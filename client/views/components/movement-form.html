@@ -10,10 +10,12 @@
         <label class="label">Descripción</label>
         <div class="control">
             <input
-                name="description"
+                name="descripcion"
                 class="input"
                 type="text"
                 placeholder=""
+                value="{{ movement.descripcion if movement.descripcion }}"
+                required
             />
         </div>
     </div>
@@ -27,6 +29,7 @@
                 type="date"
                 placeholder=""
                 value="{{ movement.date | formatDate if movement.date }}"
+                required
             />
         </div>
     </div>
@@ -40,6 +43,7 @@
                 type="text"
                 placeholder=""
                 value="{{ movement.category if movement.category }}"
+                required
             />
         </div>
     </div>
@@ -54,6 +58,7 @@
                 type="number"
                 placeholder=""
                 value="{{ movement.amount if movement.amount }}"
+                required
             />
         </div>
     </div>

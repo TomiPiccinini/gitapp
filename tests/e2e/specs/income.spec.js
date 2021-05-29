@@ -19,24 +19,34 @@ describe('Ingresos Test', () => {
 
     it('Deberia poder crear un nuevo ingreso', () => {
         cy.visit('/income');
-
         cy.get('input[name=date]').type('2021-04-26');
         cy.get('input[name=category]').type('Bono');
         cy.get('input[name=amount]').type('100000');
+        cy.get('input[name=descripcion]').type('descripcion');
         cy.contains('Guardar').click();
         cy.reload();
-
         cy.get('[data-testid=movement]').should('have.length', 5);
     });
 
-    it('Deberia poder crear un nuevo ingreso y que se muestre en la lista sin tener que hacer refresh', () => {
+    it('Deberia aparecer alerta de guardado', (done) => {
         cy.visit('/income');
-
         cy.get('input[name=date]').type('2021-04-26');
         cy.get('input[name=category]').type('Bono');
         cy.get('input[name=amount]').type('100000');
         cy.contains('Guardar').click();
-
+        cy.on('window:alert', (str) => {
+            expect(str).to.equal('Guardado exitoso');
+            done();
+          });     
+    });
+    
+    it('Deberia poder crear un nuevo ingreso y que se muestre en la lista sin tener que hacer refresh', () => {
+        cy.visit('/income');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('100000');
+        cy.contains('Guardar').click();
         cy.get('[data-testid=movement]').should('have.length', 5);
     });
+  
 });

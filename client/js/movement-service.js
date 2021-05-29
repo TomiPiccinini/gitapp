@@ -12,6 +12,12 @@ async function getIncomes() {
     return movements;
 }
 
+async function getEgress() {
+    const resp = await fetch(`${BASE_URL}/movements?type=expense`);
+    const { movements } = await resp.json();
+    return movements;
+}
+
 async function update(movement) {
     const resp = await fetch(`${BASE_URL}/movements/${movement.id}`, {
         method: 'PUT',
@@ -33,7 +39,10 @@ async function create(movement) {
         body: JSON.stringify(movement),
     });
 
-    return resp.json();
+    alert("Guardado exitoso") 
+
+    return resp.json(); 
+    
 }
 
 async function remove(movement) {
@@ -54,4 +63,5 @@ export default {
     remove,
     getLast,
     getIncomes,
+    getEgress,
 };
