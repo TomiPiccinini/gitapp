@@ -39,7 +39,10 @@ async function create(movement) {
         body: JSON.stringify(movement),
     });
 
-    return resp.json();
+    alert("Guardado exitoso") 
+
+    return resp.json(); 
+    
 }
 
 async function remove(movement) {

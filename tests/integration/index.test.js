@@ -226,6 +226,7 @@ test('Crear movimiento por api', async () => {
     expect(movements.rows[0].amount).toBe(movementData.amount);
     expect(movements.rows[0].type).toBe(movementData.type);
     expect(movements.rows[0].category).toBe(movementData.category);
+    expect(movements.rows[0].description).toBe(movementData.description);
 });
 
 test('Editar movimiento por api', async () => {
@@ -290,4 +291,57 @@ test('Editar movimiento inexistente por api', async () => {
     });
 
     expect(req.status).toBe(404);
+});
+
+
+test('Eliminar movimiento por api', async () => {
+    const movementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+
+    const URL = `${baseURL}/movements/${movement.id}`;
+    const req = await fetch(URL, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movementData),
+    });
+    const response = await req.json();
+    expect(response.message).toMatch("Movimiento eliminado");
+    expect(req.status).toBe(200);
+
+});
+
+test('Crear movimiento por api con campo descripción', async () => {
+    const movementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+        descripcion: 'Sueldo mes abril'
+    };
+
+    const URL = `${baseURL}/movements`;
+    const req = await fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movementData),
+    });
+    const movements = await MovementModel.getAll();
+
+    expect(req.status).toBe(201);
+    expect(movements.rows.length).toBe(1);
+    expect(movements.rows[0].amount).toBe(movementData.amount);
+    expect(movements.rows[0].type).toBe(movementData.type);
+    expect(movements.rows[0].category).toBe(movementData.category);
+    expect(movements.rows[0].descripcion).toMatch("Sueldo mes abril");
 });
