@@ -38,6 +38,14 @@ function getMovementData() {
     return movement;
 }
 
+function Confirmar() {
+    var mensaje = confirm("¿Está seguro que desea eliminar el movimiento?");
+    if (!mensaje) {
+        state.movement = {};
+        render('movement-form.html', state, refs.form);
+    }
+}
+
 // Event Listeners
 
 /**
@@ -60,9 +68,12 @@ window.onCancel = function () {
  * Elimina un movimiento
  **/
 window.onRemove = async function () {
-    await movementService.update(state.movement);
+    Confirmar();
+    const movement = getMovementData();
+    await movementService.remove(movement);
     state.movement = {};
     render('movement-form.html', state, refs.form);
+    window.location.reload();
 };
 
 /**
