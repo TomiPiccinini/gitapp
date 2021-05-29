@@ -65,4 +65,23 @@ router.put('/:id', function (req, res) {
         .catch(() => res.status(500).send('Error al obtener movimiento'));
 });
 
+/**
+ * Endpoint para eliminar un movimiento.
+ * Recibe el id en req.params.id
+ *
+ */
+router.delete('/:id', function (req, res) {
+    MovementModel.delete(req.params.id)
+        .then((movement) => {
+            if (movement == null) {
+                res.status(404).send(
+                    'El movimiento ' + req.params.id + ' no fue encontrado'
+                );
+            } else res.status(200).json({
+                message: "Movimiento eliminado",
+              });
+        })
+        .catch(() => res.status(500).send('Error al obtener movimiento'));
+});
+
 module.exports = router;
