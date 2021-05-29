@@ -38,8 +38,9 @@ async function create(movement) {
         },
         body: JSON.stringify(movement),
     });
-    
+
     alert("Guardado exitoso") 
+
     return resp.json(); 
     
 }
