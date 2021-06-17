@@ -1,7 +1,7 @@
 export function monefy(num) {
     if (!num) return '';
 
-    const numStr = String(num);
+    /*const numStr = String(num);
     const points = numStr.length / 3;
     const result = [];
 
@@ -11,10 +11,26 @@ export function monefy(num) {
         const chunk = numStr.slice(s, e);
 
         result.push(chunk);
+        result.reverse().join('.');
+    }*/
+
+    const parteEntera = Math.trunc(num);
+    const parteDecimal = (num + "").split(".")[1];
+
+    let resultado = String(parteEntera)+","+String(parteDecimal);
+    if(!parteDecimal){
+        return parteEntera;
+    }
+    else{
+        return resultado;
     }
 
-    return result.reverse().join('.');
+
+
+    
 }
+
+
 
 export function getRandomColor() {
     return `hsl(${360 * Math.random()}, ${25 + 70 * Math.random()}%, ${
