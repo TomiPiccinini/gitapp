@@ -51,4 +51,15 @@ describe('Ingresos Test', () => {
         cy.get('[data-testid=movement]').should('have.length', 5);
     });
   
+    it('Deberia cargar monto con decimales', () => {
+        cy.visit('/income');
+        cy.get('input[name=descripcion]').type('holamundo');
+        cy.get('input[name=date]').type('2021-07-05');
+        cy.get('input[name=category]').type('Expensas');
+        cy.get('input[name=amount]').type("1234.56");
+        cy.contains('Guardar').click();
+        cy.reload();
+
+        cy.get(':nth-child(5) > [data-testid=movement] > .level-right > :nth-child(1) > .has-text-success').should('include.text', '1.234,56')
+    });
 });

@@ -1,20 +1,13 @@
 export function monefy(num) {
     if (!num) return '';
-
-    const numStr = String(num);
-    const points = numStr.length / 3;
-    const result = [];
-
-    for (let i = 0; i < points; i++) {
-        const s = -3 * (i + 1);
-        const e = -3 * i || undefined;
-        const chunk = numStr.slice(s, e);
-
-        result.push(chunk);
-    }
-
-    return result.reverse().join('.');
+   
+    var partes = num.toString().split(".");
+    partes[0]=partes[0].replace(/\B(?=(\d{3})+(?!\d))/g,".");
+    return partes.join(",");
+    
 }
+
+
 
 export function getRandomColor() {
     return `hsl(${360 * Math.random()}, ${25 + 70 * Math.random()}%, ${
@@ -45,4 +38,9 @@ export function getMonth(dateString) {
 
 export function formatDate(date) {
     return date.split('T')[0];
+}
+
+export function friendlyDate(date){
+    return new Date(date).toLocaleDateString("es-AR")
+
 }
