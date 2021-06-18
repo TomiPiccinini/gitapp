@@ -1,9 +1,10 @@
-import { formatDate, monefy } from './utils.js';
+import { formatDate, monefy, friendlyDate } from './utils.js';
 
 const env = new window.nunjucks.Environment();
 
 env.addFilter('monefy', monefy);
 env.addFilter('formatDate', formatDate);
+env.addFilter('friendlyDate', friendlyDate);
 
 export function getRefs(context) {
     const refs = {};
