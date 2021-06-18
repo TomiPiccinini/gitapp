@@ -72,8 +72,9 @@ describe('Ingresos Test', () => {
         cy.contains('Guardar').click();
         cy.get('body > main > div > div > div:nth-child(2) > div > div.card-content > div > ul > li:nth-child(5) > div > div.level-left > div:nth-child(2) > div > p.has-text-weight-light.is-size-7').should(($date) => {
             
-            //Pongo un día menos porque creo que el horario del servidor cambia con el local y resta 1 día, pero deja crear el movimiento con un dia distinto al de hoy, que es lo que estoy resolviendo.
-            expect($date.text().trim()).equal('1/2/2021');
+            //En los test locales tira error el test porque te resta un día el que seleccionaste, pero en Github funciona bien. Supongo que será por la hora local y la del servidor, pero igualmente resuelvo 
+            //la actividad que es crear un movimiento con fecha distinta a la de hoy.
+            expect($date.text().trim()).equal('2/2/2021');
           });
     });
 });
